@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galactic Guardians: Earth Enigma</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script>
+        // JavaScript for Game Mechanics
+        let selectedCharacter = "";
+        let missionProgress = 0;
+        let characterAbilities = {
+            "Crystal Moth": "High Agility - Can gather data quickly and avoid environmental hazards.",
+            "Moon Explorer": "Advanced Technology - Can analyze data with greater accuracy.",
+            "Quantum Butterfly": "Quantum Vision - Can predict outcomes and increase the chance of mission success."
+        };
+
+        const apiKey = 'YgjzKlKIgAM5kU2EBxIFjeZJx6ShfDk4eBSXyXbQ'; // Replace with your GLOBE API key
+
+        function selectCharacter(character) {
+            selectedCharacter = character;
+            hideElement("character-selection");
+            showElement("mission-container");
+            document.getElementById("mission-description").innerText = `You have chosen ${character}. Your mission is to investigate the cause of declining pollinators in the forest. Ability: ${characterAbilities[character]}`;
+        }
+
+        function startMission() {
+            missionProgress = 1;
+            updateMissionOutcome("You have entered the Whispering Forest. You need to gather information about the environment.");
+            addButton("mission-container", "Gather Data", gatherData);
+        }
+
+        function gatherData() {
+            missionProgress++;
+            let successModifier = selectedCharacter === "Crystal Moth" ? 0.2 : 0;
+            if (missionProgress === 2) {
+                updateMissionOutcome("You are analyzing the air quality and observing pollinator behavior.");
+                addButton("mission-container", "Analyze Data", fetchGLOBEData);
+            }
+        }
+
+        async function fetchGLOBEData() {
+            try {
+                // Fetch data from GLOBE API (air temperature example)
+                let url = `https://api.globe.gov/search/v1/observation/air_temperature?lat=40&lon=-74&startdate=2023-01-01&enddate=2023-12-31&geojson=FALSE&api_key=${apiKey}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                const airTemperature = data.results[0]?.measurements?.air_temperature;
+
+                if (airTemperature) {
+                    updateMissionOutcome(`Data Collected: Air Temperature is ${airTemperature}°C.`);
+                    analyzeData(0.2); // Continue with analysis after fetching data
+                } else {
+                    handleDataFailure();
+                }
+            } catch (error) {
+                console.error('Error fetching GLOBE data:', error);
+                handleDataFailure();
+            }
+        }
+
+        function analyzeData(successModifier) {
+            missionProgress++;
+            if (missionProgress === 3) {
+                let baseSuccessChance = 0.5;
+                if (selectedCharacter === "Moon Explorer") {
+                    baseSuccessChance += 0.2; // Advanced technology increases success chance
+                } else if (selectedCharacter === "Quantum Butterfly") {
+                    baseSuccessChance += 0.15; // Quantum Vision increases success chance
+                }
+                const success = Math.random() < (baseSuccessChance + successModifier); // Calculate success with modifiers
+                if (success) {
+                    updateMissionOutcome("Mission Successful! You discovered that pollution is causing the decline of pollinators. You need to report your findings.");
+                    addButton("mission-container", "Report Findings", reportFindings);
+                } else {
+                    updateMissionOutcome("Mission Failed! You need to collect more data to determine the cause.");
+                    addButton("mission-container", "Retry Mission", retryMission);
+                }
+            }
+        }
+
+        function reportFindings() {
+            missionProgress++;
+            if (missionProgress === 4) {
+                updateMissionOutcome("Congratulations! Your report has been sent successfully, and your findings will help save the pollinators!");
+                addButton("mission-container", "Select New Mission", selectNewMission);
+            }
+        }
+
+        function retryMission() {
+            missionProgress = 1;
+            updateMissionOutcome("You have re-entered the Whispering Forest. You need to gather information about the environment again.");
+        }
+
+        function selectNewMission() {
+            hideElement("mission-container");
+            showElement("new-mission-container");
+        }
+
+        function startWaterQualityMission() {
+            hideElement("new-mission-container");
+            showElement("mission-container");
+            missionProgress = 0;
+            showElement("mission-outcome");
+            updateMissionOutcome("Mission: Great River Expedition. Your goal is to investigate the decline in fish populations by analyzing water quality.");
+            addButton("mission-container", "Gather Water Data", gatherWaterData);
+        }
+
+        function gatherWaterData() {
+            missionProgress++;
+            if (missionProgress === 1) {
+                updateMissionOutcome("You have collected water samples. Analyze the pH level and measure pollutants.");
+                addButton("mission-container", "Analyze Water Data", analyzeWaterData);
+            }
+        }
+
+        function analyzeWaterData() {
+            missionProgress++;
+            let baseSuccessChance = 0.5;
+            if (selectedCharacter === "Moon Explorer") {
+                baseSuccessChance += 0.2; // Advanced technology increases success chance
+            } else if (selectedCharacter === "Quantum Butterfly") {
+                baseSuccessChance += 0.15; // Quantum Vision increases success chance
+            }
+            if (missionProgress === 2) {
+                const success = Math.random() < baseSuccessChance; // Random success or failure with modifier
+                if (success) {
+                    updateMissionOutcome("Mission Successful! You found that agricultural runoff is causing high nitrate levels, affecting fish populations. You need to report your findings.");
+                    addButton("mission-container", "Report Findings", reportWaterFindings);
+                } else {
+                    updateMissionOutcome("Mission Failed! You need more data to understand the impact on fish populations.");
+                    addButton("mission-container", "Retry Mission", retryWaterMission);
+                }
+            }
+        }
+
+        function reportWaterFindings() {
+            missionProgress++;
+            if (missionProgress === 3) {
+                updateMissionOutcome("Congratulations! Your findings have been reported, and your efforts will help restore the river ecosystem.");
+                addButton("mission-container", "Select New Mission", selectNewMission);
+            }
+        }
+
+        function retryWaterMission() {
+            missionProgress = 1;
+            updateMissionOutcome("You have re-entered the Great River. You need to gather water samples again.");
+        }
+
+        // Utility Functions
+        function hideElement(elementId) {
+            document.getElementById(elementId).style.display = "none";
+        }
+
+        function showElement(elementId) {
+            document.getElementById(elementId).style.display = "block";
+        }
+
+        function updateMissionOutcome(message) {
+            const missionOutcomeElement = document.getElementById("mission-outcome");
+            missionOutcomeElement.style.display = "block";
+            missionOutcomeElement.innerText = message;
+        }
+
+        function addButton(containerId, buttonText, onClickFunction) {
+            const button = document.createElement("button");
+            button.innerText = buttonText;
+            button.onclick = onClickFunction;
+            document.getElementById(containerId).appendChild(button);
+        }
+
+        function handleDataFailure() {
+            updateMissionOutcome("Data collection failed. No valid data found or failed to fetch data from GLOBE. Please try again.");
+            addButton("mission-container", "Retry Mission", retryMission);
+        }
+    </script>
+</head>
+<body>
+    <div id="storyline-container" style="display: block;">
+        <h2>The Story Begins</h2>
+        <p>
+            In the not-so-distant future, Earth faces new challenges that require the help of intergalactic allies. The Galactic Guardians—a coalition of alien species—have arrived to help. Their mission: explore Earth's ecosystems, gather vital data, and protect the environment from unknown threats.
+        </p>
+        <p>
+            Each character has unique skills and plays a vital role in this grand mission:
+        </p>
+        <ul>
+            <li><strong>Crystal Moth:</strong> The master navigator, capable of using bioluminescence to illuminate paths and detect subtle environmental changes.</li>
+            <li><strong>Moon Explorer:</strong> Equipped with advanced technology, the Moon Explorer can analyze the moon’s minerals and gather data to support Earth's ecosystems.</li>
+            <li><strong>Quantum Butterfly:</strong> With the ability to manipulate quantum states, the Quantum Butterfly can gather and synthesize data in an instant, increasing the chances of mission success.</li>
+        </ul>
+        <p>
+            You, brave explorer, must choose a character and begin your mission. As a part of the Galactic Guardians, your journey will take you through mysterious forests, glowing caverns, and even the surface of the Moon. Each mission will help uncover the secrets needed to protect Earth’s environment, but your success will depend on your choices and a little bit of luck.
+        </p>
+        <button onclick="document.getElementById('storyline-container').style.display='none'; document.getElementById('character-selection').style.display='block';">Start Your Adventure</button>
+    </div>
+    <div id="game-container">
+        <div id="character-selection">
+            <h2>Select Your Character</h2>
+            <button onclick="selectCharacter('Crystal Moth')">Crystal Moth</button>
+            <button onclick="selectCharacter('Moon Explorer')">Moon Explorer</button>
+            <button onclick="selectCharacter('Quantum Butterfly')">Quantum Butterfly</button>
+        </div>
+        <div id="mission-container" style="display: none;">
+            <h2>Mission: Whispering Forest Expedition</h2>
+            <p id="mission-description">Investigate the cause of declining pollinators in the forest.</p>
+            <button onclick="startMission()">Start Mission</button>
+            <div id="mission-outcome" style="display: none;"></div>
+        </div>
+        <div id="new-mission-container" style="display: none;">
+            <h2>Select Your Next Mission</h2>
+            <button onclick="startWaterQualityMission()">Great River Expedition</button>
+        </div>
+    </div>
+</body>
+</html>

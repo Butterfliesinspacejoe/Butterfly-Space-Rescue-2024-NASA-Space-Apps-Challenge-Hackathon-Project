@@ -1,0 +1,51 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#game-container {
+    background-color: #ffffff;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#mission-container {
+    margin-top: 20px;
+}
+
+#mission-outcome {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #e0ffe0;
+    border-radius: 5px;
+    border: 1px solid #4CAF50;
+}
