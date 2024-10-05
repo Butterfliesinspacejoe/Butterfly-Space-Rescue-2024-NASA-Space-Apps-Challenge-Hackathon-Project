@@ -16,3 +16,34 @@ The Earth Observatory Natural Event Tracker (EONET) is a prototype web service w
 providing a curated source of continuously updated natural event metadata; providing a service that links those natural events to thematically-related web service-enabled image sources (e.g., via WMS, WMTS, etc.). Please see our API documentation to learn more about how to use the EONET web services.
 
 Development of EONET began in 2015 and has been supported by NASA’s Earth Observatory and Earth Science Data and Information System (ESDIS) Project.
+
+
+
+
+
+Chat GPT:
+Make API Requests
+You can make requests to the NASA API using various methods, such as:
+
+Web Browsers: Enter the API endpoint URL in your browser along with your API key.
+cURL Command: Use the command line to make GET requests.
+Programming Languages: Use languages like Python, JavaScript, or others to make HTTP requests.
+Example (using Python):
+
+python
+Copy code
+import requests
+
+api_key = 'YOUR_API_KEY'
+url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}'
+
+response = requests.get(url)
+data = response.json()
+
+print(data['title'])
+print(data['url'])
+print(data['explanation'])
+
+
+Handle API Responses
+The API will return data in JSON format. You’ll need to parse this data to extract the information you need. Most programming languages have libraries to handle JSON easily.
