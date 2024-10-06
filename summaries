@@ -7,3 +7,34 @@ We created an offline role playing storytelling game that is an educational reso
 Players of the RPG can follow the stories and educational lessons provided or create their own, and use the companion program to view and submit datasets as they follow along and explore their environment. We also created a printable version of the game and a sample dataset that players can use if they have limited or no access to the internet or a computer. 
 
 Additionally, we created a bonus game that uses the NASA APOD (Astronomy Picture of the Day) API and the Open Trivia Database API.These additional games are designed as add-ons, enhancing the experience without replacing the core gameplay, and aim to create a pop culture-style game with multi-faceted marketing.
+
+
+
+
+
+Mix of Inessa's edits and online grammar checks:
+
+The importance of learning and education is significantly enhanced through connections to pop culture and interactive activities across various mediums, including books, games, and movies. Cultural phenomena like Pokémon, Magic: The Gathering, Dungeons and Dragons, and Marvel and DC Comics illustrate this connection. To inspire future generations and redefine educational materials, it is essential to create innovative games that leverage storytelling, pop culture, and education.
+
+We developed an RPG storytelling game that utilizes the GLOBE API and GLOBE datasets as an educational resource. This app integrates AI tools like ChatGPT and Microsoft CoPilot in its creation process. Players can create characters and narratives that foster exploration and learning about their environment. The game can be played offline and is suitable for all ages. For those with internet access, we encourage players to contribute their findings to the GLOBE protocol through the "Butterfly Space Rescue" team.
+
+Participants can follow provided stories and educational lessons or craft their own. A companion program allows them to view and submit datasets while engaging with the game. For those with limited or no internet access, we offer a printable version, complete with a sample dataset, serving as a backup for documenting findings if the GLOBE API experiences internal errors.
+
+Additionally, we created a bonus trivia game that utilizes the NASA Astronomy Picture of the Day (APOD) API and the Open Trivia Database API.
+
+*We encountered persistent internal system errors with the GLOBE API, which we reported via the NASA SPACE APPS Connect GitHub Forum.
+
+*This project incorporates characters from Joseph Munisteri's upcoming card game, "Butterfly Space Rescue," launching on Kickstarter on October 17, 2024. The game runs parallel to his card game, which serves as one of our resources.
+
+
+
+
+
+
+Joe's Description (Original):
+There is a very big importance in learning and education that connects directly with having connections to POP Culture and also fun interactive activities that are also able to be used across mediums such as books, games, movies etc. We see this throughout history time and time again with cultural phenomenon such as Pokémon, Magic the Gathering, Dungeons and Dragons, Marvel Comics, DC Comics, and so much more. It is very important to create New and innovative games and materials that leverage story building, POP culture and education in order to not only inspire future generations but also create new educational forms of media that can cross the boundaries of the way we perceive educational materials. We created a RPG storytelling game that utilizes and connects with the GLOBE Api and GLOBE Datasets, it is an educational resource that integrates the use of AI such as ChatGPT and Microsoft CoPilot as well. It can also be played offline. This RPG Storytelling game uses the GLOBE protocol datasets as a resource to allow players to use characters to tell and create stories that encourage learning and exploration of the environment around them. it is suitable for all ages. it encourages players to not only learn about the earth and universe around them but also to contribute the datasets that they find to the GLOBE protocol via the GLOBE protocol organization team "Butterfly Space Rescue". Players of the RPG can follow the stories and educational lessons provided or create their own, and then use the companion program to view and submit datasets as they follow along with the story and explore their environment. We also created a printable version of the game and a sample dataset that players can use if they have limited or no access to the internet or a computer. This doubles as a backup method for if the GLOBE Api encounters internal system errors, as a result, sometimes simplicity is best and going back to the basics of pen and paper and documenting by hand to input the data findings when there is access to the right technology. we also created a second bonus trivia game that uses the NASA APOD (Astronomy Picture of the Day) API and the Open Trivia Database API. 
+
+*we encountered Issues with the GLOBE Api giving "internal system errors" which was a persistent issue, and reported our findings via the NASA SPACE APPS Connect GitHub Forum. 
+
+
+*This project uses the characters from team leader Joseph Munisteri's upcoming card game "Butterfly Space Rescue" that he is launching on Kickstarter on October 17th 2024. The game runs parallel to his card game and is its own resource.
