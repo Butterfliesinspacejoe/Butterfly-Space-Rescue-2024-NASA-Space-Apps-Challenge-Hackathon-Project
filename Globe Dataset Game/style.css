@@ -1,0 +1,269 @@
+/* Styles for Galactic Guardians: Earth Enigma */
+
+.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #000;
+    color: #f0f0f0;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-image: url('space_background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#game-container {
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    max-width: 800px;
+    margin: 60px auto;
+}
+
+button {
+    background-color: #1e90ff;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s, background-color 0.3s;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #1c86ee;
+    transform: scale(1.05);
+}
+
+h2 {
+    color: #00bfff;
+}
+
+#game-title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 48px;
+    color: #FFD700;
+    animation: float 3s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 223, 0, 0.8);
+}
+
+@keyframes float {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+ul {
+    text-align: left;
+    list-style-type: disc;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+p {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+#mission-choices {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#mission-outcome {
+    margin-top: 20px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/***** New Styles for More Interactivity *****/
+
+/* Style for character selection buttons */
+#character-selection button {
+    border: 2px solid transparent;
+    padding: 15px 25px;
+    margin: 15px;
+    background-color: #ff4500;
+}
+
+#character-selection button.selected {
+    border-color: #FFD700;
+    box-shadow: 0 0 15px #FFD700;
+}
+
+/* Add animations for mission success and failure */
+#mission-outcome.success {
+    color: #4CAF50;
+    background-color: #e8f5e9;
+    animation: successBlink 1s ease-in-out;
+}
+
+#mission-outcome.failure {
+    color: #e74c3c;
+    background-color: #fce4e4;
+    animation: failureShake 0.5s ease-in-out;
+}
+
+@keyframes successBlink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes failureShake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Tooltip for more information */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/***** Styles for Mission Choices *****/
+#mission-choices button {
+    background-color: #8e44ad;
+    color: white;
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    border-radius: 10px;
+}
+
+#mission-choices button:hover {
+    background-color: #732d91;
+    transform: scale(1.05);
+}
+
+/***** Styles for GLOBE Data Section *****/
+#globe-data-container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.globe-data-entry {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#globe-data-container button {
+    background-color: #007BFF;
+    color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+#globe-data-container button:hover {
+    background-color: #0056b3;
+}
+
+/***** Styles for GLOBE Data Chart *****/
+#globeDataChart {
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+/***** Styles for NASA Photo of the Day Section *****/
+#nasa-photo-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+#nasa-photo-container img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/***** Styles for Start Your Adventure Button *****/
+#storyline-container button {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e90ff;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s, background-color 0.3s;
+    border-radius: 15px;
+}
+
+#storyline-container button:hover {
+    background-color: #1c86ee;
+    transform: scale(1.1);
+}
