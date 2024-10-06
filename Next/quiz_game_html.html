@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quiz_game_css.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <title>Quiz Game - Space Edition</title>
+</head>
+<body>
+    <div id="stars"></div> <!-- Animated starry background -->
+    <button id="saturn-button" onclick="toggleDescription()">🪐</button>
+    <div id="game-description" class="hidden">
+        <h3>Game Description</h3>
+        <p>Welcome to the Space Quiz Game! Choose your character and answer all the questions correctly to complete your mission. Special abilities can help you along the way. Good luck, Space Explorer!</p>
+        <button onclick="toggleDescription()">Close</button>
+    </div>
+    <div id="game-container">
+        <div id="character-selection">
+            <h2>Choose Your Character</h2>
+            <button onclick="chooseCharacter('skip')">Character 1: Skip One Question (Warp Jump)</button>
+            <button onclick="chooseCharacter('levelBoost')">Character 2: Start at Level 3 (Mission Specialist)</button>
+            <button onclick="chooseCharacter('extraQuestion')">Character 3: Unlock Extra Question (Explorer)</button>
+        </div>
+        <div id="status-bar">
+            <div id="hearts">
+                ❤️❤️❤️
+            </div>
+            <div id="level">
+                Mission Rank: <span id="level-counter">1</span>
+            </div>
+        </div>
+        <div id="question-container">
+            <h2 id="question"></h2>
+            <div id="options">
+                <button class="option" onclick="handleAnswer(0)"></button>
+                <button class="option" onclick="handleAnswer(1)"></button>
+                <button class="option" onclick="handleAnswer(2)"></button>
+            </div>
+            <button id="skip-button" class="hidden" onclick="skipQuestion()">Warp Jump (Skip)</button>
+        </div>
+        <div id="game-over" class="hidden">
+            <h2>Mission Failed!</h2>
+            <button onclick="restartGame()">Restart Mission</button>
+        </div>
+        
+    </div>
+    <div id="feedback-container" class="hidden">
+        <h3>Incorrect Answer</h3>
+        <p id="feedback-message"></p>
+        <button onclick="closeFeedback()">Close</button>
+    </div>
+    <script src="quiz_game_js.js"></script>
+</body>
+</html>
