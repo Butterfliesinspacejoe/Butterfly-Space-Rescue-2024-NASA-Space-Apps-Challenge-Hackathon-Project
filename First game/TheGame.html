@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galactic Guardians: Earth Enigma</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="storyline-container" class="visible">
+        <h2>The Story Begins</h2>
+        <p>
+            In the not-so-distant future, Earth faces new challenges that require the help of intergalactic allies. The Galactic Guardians—a coalition of alien species—have arrived to help. Their mission: explore Earth's ecosystems, gather vital data, and protect the environment from unknown threats.
+        </p>
+        <p>
+            Each character has unique skills and plays a vital role in this grand mission:
+        </p>
+        <ul>
+            <li><strong>Crystal Moth:</strong> The master navigator, capable of using bioluminescence to illuminate paths and detect subtle environmental changes.</li>
+            <li><strong>Moon Explorer:</strong> Equipped with advanced technology, the Moon Explorer can analyze the moon’s minerals and gather data to support Earth's ecosystems.</li>
+            <li><strong>Quantum Butterfly:</strong> With the ability to manipulate quantum states, the Quantum Butterfly can gather and synthesize data in an instant, increasing the chances of mission success.</li>
+        </ul>
+        <p>
+            You, brave explorer, must choose a character and begin your mission. As a part of the Galactic Guardians, your journey will take you through mysterious forests, glowing caverns, and even the surface of the Moon. Each mission will help uncover the secrets needed to protect Earth’s environment, but your success will depend on your choices and a little bit of luck.
+        </p>
+        <button onclick="document.getElementById('storyline-container').style.display='none'; document.getElementById('character-selection').style.display='block';">Start Your Adventure</button>
+    </div>
+    <div id="game-container">
+        <div id="character-selection" class="hidden">
+            <h2>Select Your Character</h2>
+            <button data-character="Crystal Moth">Crystal Moth</button>
+            <button data-character="Moon Explorer">Moon Explorer</button>
+            <button data-character="Quantum Butterfly">Quantum Butterfly</button>
+        </div>
+        <div id="mission-container" class="hidden">
+            <h2>Mission: Whispering Forest Expedition</h2>
+            <p id="mission-description">Investigate the cause of declining pollinators in the forest.</p>
+            <button onclick="startMission()">Start Mission</button>
+            <div id="mission-outcome" class="hidden"></div>
+            <div id="mission-choices" class="hidden">
+                <h3>Make a Choice:</h3>
+                <button onclick="makeChoice('Use Crystal Moth’s bioluminescence to find hidden paths')">Use Crystal Moth’s bioluminescence</button>
+                <button onclick="makeChoice('Analyze moon rocks to create a natural fertilizer')">Analyze moon rocks</button>
+                <button onclick="makeChoice('Use Quantum Butterfly’s quantum abilities to fast-track data')">Use Quantum Butterfly’s abilities</button>
+            </div>
+        </div>
+        <div id="new-mission-container" class="hidden">
+            <h2>Select Your Next Mission</h2>
+            <button onclick="startWaterQualityMission()">Great River Expedition</button>
+        </div>
+        <div id="globe-data-container" class="hidden">
+            <h2>Environmental Data from GLOBE</h2>
+            <div id="globe-data"></div>
+            <button onclick="loadGlobeData()">Load Latest Data</button>
+            <canvas id="globeDataChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+    <!-- Adding a footer for better user navigation -->
+    <footer>
+        <p>© 2024 Galactic Guardians. All rights reserved.</p>
+        <p>Need help? <a href="#">Contact Support</a></p>
+    </footer>
+</body>
+</html>
